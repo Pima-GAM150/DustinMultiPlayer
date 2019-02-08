@@ -1,17 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GM: MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GM Instance;
+
+
+    private void Awake()
     {
-        
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
         
     }
