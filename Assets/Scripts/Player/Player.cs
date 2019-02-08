@@ -1,18 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun, IPunInstantiateMagicCallback
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        NetworkedObjects.Instance.AddPlayer(this.photonView);
     }
 }
