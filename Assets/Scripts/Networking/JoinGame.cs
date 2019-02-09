@@ -19,7 +19,7 @@ public class JoinGame : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        LoadingText.text = "Onward to Battle..";
+        LoadingText.text = "Looking for a Battleield..";
 
         PhotonNetwork.JoinRandomRoom();
     }
@@ -28,7 +28,7 @@ public class JoinGame : MonoBehaviourPunCallbacks
     {
         LoadingText.text = "Making my own battlefield...";
 
-        PhotonNetwork.CreateRoom("MyRoom", new RoomOptions() { MaxPlayers = 4 }, null);
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 4 }, null);
     }
 
     public override void OnCreatedRoom()
