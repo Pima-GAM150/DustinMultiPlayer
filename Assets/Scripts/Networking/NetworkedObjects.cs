@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class NetworkedObjects : MonoBehaviour
 {
+    #region Variables
     public static NetworkedObjects Instance;
     
     private int Seed;
@@ -18,6 +19,7 @@ public class NetworkedObjects : MonoBehaviour
 
     [ReadOnly]
     public List<PhotonView> Players;
+    #endregion
 
     private void Awake()
     {

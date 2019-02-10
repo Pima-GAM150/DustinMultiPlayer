@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 
 public class PlayerColor : MonoBehaviourPun
 {
+    #region Variables
     [BoxGroup("Player Color Options",true,true),LabelText("Player Pieces Renderers")]
     public Renderer[] Rends;
 
@@ -14,7 +15,8 @@ public class PlayerColor : MonoBehaviourPun
 
     [BoxGroup("Player Color Options", true, true), LabelText("Current Player Color"), ReadOnly]
     public Material CurrentColor;
-    
+    #endregion
+
     [PunRPC]
     public void SetColor(int order)
     {

@@ -4,6 +4,7 @@ using Photon.Pun;
 
 public class TopRotation : MonoBehaviourPun , IPunObservable
 {
+    #region Variables
     [BoxGroup("Top Rotation Settings", true, true), LabelText("Rotation Speed"), Range(2,15)]
     public float Speed;
 
@@ -25,22 +26,7 @@ public class TopRotation : MonoBehaviourPun , IPunObservable
     [BoxGroup("Current Top Settings", true, true), LabelText("Yaw being Added"), ReadOnly]
     public float Yaw;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            if (LastSyncedAngle != TargetAngle)
-            {
-                LastSyncedAngle = TargetAngle;
-
-                stream.SendNext(TargetAngle);
-            }
-        }
-        else
-        {
-            TargetAngle = (float)stream.ReceiveNext();
-        }
-    }
+    #endregion
 
     private void Update()
     {
@@ -60,4 +46,20 @@ public class TopRotation : MonoBehaviourPun , IPunObservable
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            if (LastSyncedAngle != TargetAngle)
+            {
+                LastSyncedAngle = TargetAngle;
+
+                stream.SendNext(TargetAngle);
+            }
+        }
+        else
+        {
+            TargetAngle = (float)stream.ReceiveNext();
+        }
+    }
 }

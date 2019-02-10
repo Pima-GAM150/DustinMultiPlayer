@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
+    #region Variables
     [LabelText("How Fast"), Range(2, 15)]
     public float Speed;
 
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     [BoxGroup("Position Data", true, true), ReadOnly]
     public Vector3 LastSyncedPos;
+    #endregion
 
     private void Update()
     {

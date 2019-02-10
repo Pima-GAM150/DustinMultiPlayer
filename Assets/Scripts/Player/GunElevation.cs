@@ -4,6 +4,7 @@ using Photon.Pun;
 
 public class GunElevation : MonoBehaviourPun , IPunObservable
 {
+    #region Variables
     [BoxGroup("Barrel Settings", true, true), LabelText("Max Elevation")]
     public float BarrelAngleMax = 50f;
 
@@ -30,23 +31,7 @@ public class GunElevation : MonoBehaviourPun , IPunObservable
 
     [BoxGroup("Current Barrel Settings", true, true), LabelText("Pitch Being Added"), ReadOnly]
     public float pitch;
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-           if(LastGunAngle != TargetGunAngle)
-            {
-                LastGunAngle = TargetGunAngle;
-
-                stream.SendNext(TargetGunAngle);
-            }
-        }
-        else
-        {
-            TargetGunAngle = (float)stream.ReceiveNext();
-        }
-    }
+    #endregion
 
     private void Update()
     {
@@ -65,4 +50,20 @@ public class GunElevation : MonoBehaviourPun , IPunObservable
         
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            if (LastGunAngle != TargetGunAngle)
+            {
+                LastGunAngle = TargetGunAngle;
+
+                stream.SendNext(TargetGunAngle);
+            }
+        }
+        else if (stream.IsReading)
+        {
+            TargetGunAngle = (float)stream.ReceiveNext();
+        }
+    }
 }

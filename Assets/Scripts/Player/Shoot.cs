@@ -4,6 +4,7 @@ using Photon.Pun;
 
 public class Shoot : MonoBehaviourPun
 {
+    #region Variables
     [BoxGroup("Projectile",true,true)]
     public GameObject Shell;
 
@@ -12,6 +13,7 @@ public class Shoot : MonoBehaviourPun
 
     [BoxGroup("Projectile", true, true), LabelText("Player Color"),ReadOnly]
     public Material PlayerColor;
+    #endregion
 
     private void Start()
     {
