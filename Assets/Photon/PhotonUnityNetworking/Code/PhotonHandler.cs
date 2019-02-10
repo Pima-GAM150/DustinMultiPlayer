@@ -190,7 +190,7 @@ namespace Photon.Pun
 
         public void OnCreateRoomFailed(short returnCode, string message){}
 
-        public void OnJoinRoomFailed(short returnCode, string message){}
+        public void OnJoinRandomRoomFailed(short returnCode, string message){}
 
         public void OnJoinRandomFailed(short returnCode, string message){}
 

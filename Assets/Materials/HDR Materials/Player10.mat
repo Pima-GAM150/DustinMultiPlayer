@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player4
+  m_Name: Player10
   m_Shader: {fileID: 4800000, guid: 7b82fed145266c5498fdf80a9ff66af6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -17,16 +17,20 @@ Material:
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
+  - DistortionVectors
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
   - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_96201EF0:
-        m_Texture: {fileID: 2800000, guid: f1da6f14dad5dde4b966b155a695bd8d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62f1bf2e81d6bf84092636fb96c34342, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_A958190D:
-        m_Texture: {fileID: 2800000, guid: 62f1bf2e81d6bf84092636fb96c34342, type: 3}
+        m_Texture: {fileID: 2800000, guid: f1da6f14dad5dde4b966b155a695bd8d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -114,9 +118,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_17378C35: 0.484
-    - Vector1_CCFEA4B5: 6
-    - Vector1_DA1376E2: 0.695
+    - Vector1_17378C35: 0.45
+    - Vector1_CCFEA4B5: 4
+    - Vector1_DA1376E2: 0.935
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -142,16 +146,16 @@ Material:
     - _DisplacementMode: 0
     - _DistortionBlendMode: 0
     - _DistortionBlurBlendMode: 0
-    - _DistortionBlurDstBlend: 0
+    - _DistortionBlurDstBlend: 1
     - _DistortionBlurRemapMax: 1
     - _DistortionBlurRemapMin: 0
     - _DistortionBlurScale: 1
-    - _DistortionBlurSrcBlend: 0
+    - _DistortionBlurSrcBlend: 1
     - _DistortionDepthTest: 1
-    - _DistortionDstBlend: 0
+    - _DistortionDstBlend: 1
     - _DistortionEnable: 0
     - _DistortionScale: 1
-    - _DistortionSrcBlend: 0
+    - _DistortionSrcBlend: 1
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
     - _DoubleSidedEnable: 0
@@ -224,14 +228,14 @@ Material:
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
-    - _ZTestModeDistortion: 8
+    - _ZTestModeDistortion: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_2C8F9A48: {r: 3.1843138, g: 3.2, b: 0, a: 0}
-    - Color_5787EA9A: {r: 0.5, g: 0.42178693, b: 0, a: 0}
-    - Color_A86CD5B4: {r: 0.8699545, g: 0.8867924, b: 0, a: 0}
+    - Color_2C8F9A48: {r: 8.658824, g: 0, b: 25.6, a: 0}
+    - Color_5787EA9A: {r: 0.8584906, g: 0.22603458, b: 0.044544328, a: 1}
+    - Color_A86CD5B4: {r: 0.1254902, g: 0.09019608, b: 0.68235296, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

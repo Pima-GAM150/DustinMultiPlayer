@@ -24,11 +24,11 @@ public class JoinGame : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public override void OnJoinRandomFailed(short returnCode, string message)
     {
         LoadingText.text = "Making my own battlefield...";
 
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 4 }, null);
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 20 }, null);
     }
 
     public override void OnCreatedRoom()

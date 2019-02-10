@@ -112,7 +112,7 @@ namespace Photon.Pun.UtilityScripts
         {
         }
 
-        public void OnJoinRoomFailed(short returnCode, string message)
+        public void OnJoinRandomRoomFailed(short returnCode, string message)
         {
         }
 
