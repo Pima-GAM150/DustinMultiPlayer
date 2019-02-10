@@ -1855,7 +1855,7 @@ namespace Photon.Realtime
             {
                 if (operationResponse.OperationCode == OperationCode.JoinGame)
                 {
-                    this.MatchMakingCallbackTargets.OnJoinRoomFailed(operationResponse.ReturnCode, operationResponse.DebugMessage);
+                    this.MatchMakingCallbackTargets.OnJoinRandomRoomFailed(operationResponse.ReturnCode, operationResponse.DebugMessage);
                 }
                 else if (operationResponse.OperationCode == OperationCode.CreateGame)
                 {
@@ -3012,7 +3012,7 @@ namespace Photon.Realtime
         /// </remarks>
         /// <param name="returnCode">Operation ReturnCode from the server.</param>
         /// <param name="message">Debug message for the error.</param>
-        void OnJoinRoomFailed(short returnCode, string message);
+        void OnJoinRandomRoomFailed(short returnCode, string message);
 
         /// <summary>
         /// Called when a previous OpJoinRandom call failed on the server.
@@ -3368,13 +3368,13 @@ namespace Photon.Realtime
             }
         }
 
-        public void OnJoinRoomFailed(short returnCode, string message)
+        public void OnJoinRandomRoomFailed(short returnCode, string message)
         {
             this.UpdateCallbackTargets();
 
             foreach (IMatchmakingCallbacks target in this)
             {
-                target.OnJoinRoomFailed(returnCode, message);
+                target.OnJoinRandomRoomFailed(returnCode, message);
             }
         }
 

@@ -61,7 +61,7 @@ public class NetworkedObjects : MonoBehaviour
 
         if(PhotonNetwork.IsMasterClient)
         {
-            player.RPC("SetColor",RpcTarget.AllBuffered,Players.Count - 1 );
+            player.RPC("SetColor",RpcTarget.AllBuffered,UnityEngine.Random.Range(0,19) );
         }
     }
 

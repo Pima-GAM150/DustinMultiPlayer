@@ -192,7 +192,7 @@ namespace Photon.Realtime
             Debug.Log(this.GetFormattedTimestamp() + " SupportLogger OnJoinedRoom(" + this.client.CurrentRoom + "). " + this.client.CurrentLobby + " GameServer:" + this.client.GameServerAddress);
         }
 
-        public void OnJoinRoomFailed(short returnCode, string message)
+        public void OnJoinRandomRoomFailed(short returnCode, string message)
         {
         }
 

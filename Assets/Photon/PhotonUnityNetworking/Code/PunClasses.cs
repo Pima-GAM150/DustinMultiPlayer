@@ -289,7 +289,7 @@ namespace Photon.Pun
         /// </remarks>
         /// <param name="returnCode">Operation ReturnCode from the server.</param>
         /// <param name="message">Debug message for the error.</param>
-        public virtual void OnJoinRoomFailed(short returnCode, string message)
+        public virtual void OnJoinRandomRoomFailed(short returnCode, string message)
         {
         }
 
