@@ -60,10 +60,11 @@ public class NetworkedObjects : MonoBehaviour
     public void AddPlayer(PhotonView player)
     {
         Players.Add(player);
+      //  player.
 
         if(PhotonNetwork.IsMasterClient)
         {
-            player.RPC("SetColor",RpcTarget.AllBuffered,UnityEngine.Random.Range(0,19) );
+            player.RPC("SetColor",RpcTarget.AllBuffered,Players.Count-1 );
         }
     }
 

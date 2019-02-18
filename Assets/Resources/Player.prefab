@@ -440,7 +440,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 1238457228547559988}
@@ -593,6 +593,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9178994915373761113}
     m_Modifications:
+    - target: {fileID: 1293395982084259876, guid: 354206dfbaf3555409440080f24112c2,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293395982084259876, guid: 354206dfbaf3555409440080f24112c2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1293395982084259879, guid: 354206dfbaf3555409440080f24112c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -647,16 +657,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293395982084259876, guid: 354206dfbaf3555409440080f24112c2,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293395982084259876, guid: 354206dfbaf3555409440080f24112c2,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1293395982084259881, guid: 354206dfbaf3555409440080f24112c2,
         type: 3}

@@ -54,12 +54,10 @@ public class GunElevation : MonoBehaviourPun , IPunObservable
     {
         if (stream.IsWriting)
         {
-            if (LastGunAngle != TargetGunAngle)
-            {
+            if(LastGunAngle!=TargetGunAngle)
                 LastGunAngle = TargetGunAngle;
 
-                stream.SendNext(TargetGunAngle);
-            }
+            stream.SendNext(TargetGunAngle);
         }
         else if (stream.IsReading)
         {

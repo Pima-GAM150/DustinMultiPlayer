@@ -50,12 +50,10 @@ public class TopRotation : MonoBehaviourPun , IPunObservable
     {
         if (stream.IsWriting)
         {
-            if (LastSyncedAngle != TargetAngle)
-            {
+            if(LastSyncedAngle!=TargetAngle)
                 LastSyncedAngle = TargetAngle;
 
-                stream.SendNext(TargetAngle);
-            }
+            stream.SendNext(TargetAngle);
         }
         else
         {
