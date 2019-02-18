@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    #region Variables
     [LabelText("Target")]
     public Transform PlayerPos;
 
@@ -11,6 +12,7 @@ public class CameraFollow : MonoBehaviour
 
     [LabelText("Distance From Player")]
     public Vector3 Offset;
+    #endregion
 
     private void FixedUpdate()
     {

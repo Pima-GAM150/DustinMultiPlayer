@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    #region Variables
     [BoxGroup("Game Control",true,true)]
     public GameObject PauseMenu;
 
     [BoxGroup("Game Control", true, true)]
     public GameObject OptionsMenu;
+    #endregion
 
     public void StartConnection()
     {

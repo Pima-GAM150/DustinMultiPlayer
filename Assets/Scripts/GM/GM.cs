@@ -11,6 +11,7 @@ public class GM: MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {

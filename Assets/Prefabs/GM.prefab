@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8584609489670538367}
   - component: {fileID: 6381018422804154978}
   - component: {fileID: 7994196499703203713}
+  - component: {fileID: 595263974536628701}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396460433136210256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3553244, y: 0.97354674, z: 1.8105605}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6203891499591821253}
@@ -58,6 +59,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f96ab5654a1acf4490fbd732d4320cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &595263974536628701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396460433136210256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503bc9f035d14064388050482e6d503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2003088713682078011
