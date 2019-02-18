@@ -44,10 +44,12 @@ public class NetworkedObjects : MonoBehaviour
 
         if(SpawnPoints.Count<=0)
         {
-            var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
-            var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
+            /* var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
+             var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
 
-            spawnPos = World.bounds.center + new Vector3(xRange, 1f, zRange); 
+             spawnPos = World.bounds.center + new Vector3(xRange, 1f, zRange); */
+
+            spawnPos = new Vector3(0, 0, 0);
         }
         else
         {
