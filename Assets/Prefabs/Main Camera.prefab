@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1293395982084259877}
   - component: {fileID: 1293395982084259880}
   - component: {fileID: 1293395982084259881}
+  - component: {fileID: 3171981672169755341}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,11 +46,11 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_GateFitMode: 2
-  m_FocalLength: 50
+  m_FocalLength: 20
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -57,8 +58,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 600
+  field of view: 61.927517
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -212,3 +213,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &3171981672169755341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293395982084259876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecc61c0ea13bab4ab660c54204f2cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPos: {x: 0, y: 0, z: 0}
+  Smoothing: 0.125
+  Offset: 5.75
+  Yaw: 0
+  CurrentRotation: {x: 0, y: 0, z: 0}
+  SmoothVel: {x: 0, y: 0, z: 0}

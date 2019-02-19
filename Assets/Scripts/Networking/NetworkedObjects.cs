@@ -3,6 +3,7 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class NetworkedObjects : MonoBehaviour
 {
@@ -11,18 +12,26 @@ public class NetworkedObjects : MonoBehaviour
     
     private int Seed;
 
+
+
     [BoxGroup("WorldData",true,true)]
     public BoxCollider World;
 
     [BoxGroup("WorldData", true, true)]
     public List<Vector3> SpawnPoints;
 
-    [ReadOnly]
+    [BoxGroup("WorldData", true, true),ReadOnly]
     public List<PhotonView> Players;
+    [BoxGroup("WorldData", true, true), ReadOnly]
+    public int index;
+
+    public UnityEvent AddedAPlayer;
     #endregion
 
     private void Awake()
     {
+        index = 0;
+
         if(Instance == null)
         {
             Instance = this;
@@ -44,14 +53,18 @@ public class NetworkedObjects : MonoBehaviour
 
         if(SpawnPoints.Count<=0)
         {
-            var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
-            var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
+            /* var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
+             var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
 
-            spawnPos = World.bounds.center + new Vector3(xRange, 1f, zRange); 
+             spawnPos = World.bounds.center + new Vector3(xRange, 1f, zRange); */
+
+            spawnPos = new Vector3(0, 0, 0);
         }
         else
         {
-            spawnPos = SpawnPoints[Players.Count-1];
+            spawnPos = SpawnPoints[index];
+
+            index++;
         }
 
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
@@ -65,6 +78,8 @@ public class NetworkedObjects : MonoBehaviour
         if(PhotonNetwork.IsMasterClient)
         {
             player.RPC("SetColor",RpcTarget.AllBuffered,Players.Count-1 );
+
+            AddedAPlayer?.Invoke();
         }
     }
 

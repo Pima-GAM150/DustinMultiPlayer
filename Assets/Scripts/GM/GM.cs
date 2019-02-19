@@ -15,7 +15,7 @@ public class GM: MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(this);
         }
     }
 
