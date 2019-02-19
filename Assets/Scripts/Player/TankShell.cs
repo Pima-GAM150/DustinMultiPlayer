@@ -26,7 +26,7 @@ public class TankShell : MonoBehaviour
     {
         var Rot = transform.forward * RotSpeed;
 
-        var Pos = Vector3.zero * Speed * Time.deltaTime;
+        var Pos = Vector3.one;// real projectile motion here
 
         transform.position += Pos;
 

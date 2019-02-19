@@ -22,12 +22,16 @@ public class NetworkedObjects : MonoBehaviour
 
     [BoxGroup("WorldData", true, true),ReadOnly]
     public List<PhotonView> Players;
+    [BoxGroup("WorldData", true, true), ReadOnly]
+    public int index;
 
     public UnityEvent AddedAPlayer;
     #endregion
 
     private void Awake()
     {
+        index = 0;
+
         if(Instance == null)
         {
             Instance = this;
@@ -58,7 +62,9 @@ public class NetworkedObjects : MonoBehaviour
         }
         else
         {
-            spawnPos = SpawnPoints[Players.Count-1];
+            spawnPos = SpawnPoints[index];
+
+            index++;
         }
 
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
