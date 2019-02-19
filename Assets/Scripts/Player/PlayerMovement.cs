@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             var x = Input.GetAxis("Horizontal") * Speed * Time.deltaTime; 
             var z = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
 
-            Target.Translate(x, 1f, z);
+            Target.Translate(x, 0, z);
 
             if (!NetworkedObjects.Instance.World.bounds.Contains(Target.position))
             {
@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
-            if(LastSyncedPos != Target.position)
-                LastSyncedPos = Target.position;
+            
+            LastSyncedPos = Target.position;
 
             stream.SendNext(Target.position);
         }

@@ -3,6 +3,7 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class NetworkedObjects : MonoBehaviour
 {
@@ -11,14 +12,18 @@ public class NetworkedObjects : MonoBehaviour
     
     private int Seed;
 
+
+
     [BoxGroup("WorldData",true,true)]
     public BoxCollider World;
 
     [BoxGroup("WorldData", true, true)]
     public List<Vector3> SpawnPoints;
 
-    [ReadOnly]
+    [BoxGroup("WorldData", true, true),ReadOnly]
     public List<PhotonView> Players;
+
+    public UnityEvent AddedAPlayer;
     #endregion
 
     private void Awake()
@@ -67,6 +72,8 @@ public class NetworkedObjects : MonoBehaviour
         if(PhotonNetwork.IsMasterClient)
         {
             player.RPC("SetColor",RpcTarget.AllBuffered,Players.Count-1 );
+
+            AddedAPlayer?.Invoke();
         }
     }
 

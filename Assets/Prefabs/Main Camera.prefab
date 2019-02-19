@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecc61c0ea13bab4ab660c54204f2cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPos: {fileID: 0}
+  PlayerPos: {x: 0, y: 0, z: 0}
   Smoothing: 0.125
   Offset: 5.75
   Yaw: 0
