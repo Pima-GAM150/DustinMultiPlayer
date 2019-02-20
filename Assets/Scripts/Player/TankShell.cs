@@ -24,13 +24,9 @@ public class TankShell : MonoBehaviour
 
     private void Update()
     {
-        var Rot = transform.forward * RotSpeed;
+        var Rot = transform.forward;
 
-        var Pos = Vector3.one;// real projectile motion here
-
-        transform.position += Pos;
-
-        transform.localEulerAngles += Rot;
+        transform.Rotate(Rot,RotSpeed);
     }
 
     IEnumerator LifeSpan()
