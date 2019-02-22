@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8714938800703237560}
   - component: {fileID: 7867954464177343664}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,10 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efd7d59d685fce419226ae5e9455335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 21.28
-  RotSpeed: 22.42
   LifeTime: 10
-  rb: {fileID: 0}
 --- !u!54 &2245215382288523585
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,7 +163,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!1 &6493050806905227738
 GameObject:
@@ -180,6 +177,7 @@ GameObject:
   - component: {fileID: 2618191753557658190}
   - component: {fileID: 1634864372897945059}
   - component: {fileID: 3721851959375260579}
+  - component: {fileID: 4495763936401517750}
   m_Layer: 0
   m_Name: shell model
   m_TagString: Untagged
@@ -261,3 +259,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: -1
   m_Mesh: {fileID: 4300000, guid: 7162baa8575054345b31a567dca18431, type: 3}
+--- !u!114 &4495763936401517750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493050806905227738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588a3e72cc5ee144d91c545ba3a9a664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotSpeed: 5
