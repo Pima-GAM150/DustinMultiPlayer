@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeTime: 10
+  BoomVFX: {fileID: 0}
 --- !u!54 &2245215382288523585
 Rigidbody:
   m_ObjectHideFlags: 0

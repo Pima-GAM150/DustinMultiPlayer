@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviourPun, IPunObservable, IPunInstantiateMagicCallback, IDamageable
 {
-    public float Health;
+    public float Health = 100;
 
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {

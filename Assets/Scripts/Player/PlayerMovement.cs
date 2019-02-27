@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     [BoxGroup("Position Data", true, true), ReadOnly]
     public Vector3 LastSyncedPos;
+
     #endregion
 
     private void Update()
