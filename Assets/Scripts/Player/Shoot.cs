@@ -41,7 +41,7 @@ public class Shoot : MonoBehaviourPun
     {
         GameObject newShell = Instantiate (Shell, SpawnTarget.position, SpawnTarget.localRotation);
 
-        newShell.GetComponent<Rigidbody>().velocity = LaunchSpeed * SpawnTarget.forward;
+        newShell.GetComponentInChildren<Rigidbody>().velocity = LaunchSpeed * SpawnTarget.forward;
 
         newShell.transform.forward = SpawnTarget.transform.forward;
         

@@ -47,11 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   World: {fileID: 3544032900388186592}
   SpawnPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 3}
-  - {x: 3, y: 0, z: 1}
-  - {x: 10, y: 0, z: 10}
+  - {x: 88, y: 1, z: -225}
+  - {x: -220, y: 1, z: -174}
+  - {x: 180, y: 1, z: 180}
+  - {x: -140, y: 1, z: 230}
   Players: []
+  index: 0
   AddedAPlayer:
     m_PersistentCalls:
       m_Calls: []

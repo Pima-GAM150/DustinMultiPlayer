@@ -64,7 +64,14 @@ public class NetworkedObjects : MonoBehaviour
         {
             spawnPos = SpawnPoints[index];
 
-            index++;
+            if(index < SpawnPoints.Capacity-1)
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
         }
 
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);

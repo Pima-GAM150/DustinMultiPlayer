@@ -7,21 +7,29 @@ public class TankShell : MonoBehaviour
 {
     #region Variables
 
-        [BoxGroup("Shell Settings"),LabelText("Life time of shell"), Range(1, 10)]
-        public float LifeTime;
-
         [BoxGroup("Shell Settings"), LabelText("Explosion VFX")]
         public GameObject BoomVFX;
-
     #endregion
-    
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Boom"))
+        Debug.Log(collision.gameObject.name);
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("BulletCollisions"))
         {
+            Debug.Log("Boomable");
+
             Instantiate(BoomVFX, this.transform.position, Quaternion.identity);
+
+            if(collision.gameObject.tag =="Player")
+            {
+                Debug.Log("Player");
+
+                collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
+            }
         }
-        
+
+        Destroy(this.gameObject);
     }
 
 }
