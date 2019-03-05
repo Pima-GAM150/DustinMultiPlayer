@@ -1,47 +1,35 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.VFX;
 using System.Collections;
 
 public class TankShell : MonoBehaviour
 {
     #region Variables
 
-    [BoxGroup("Shell Settings"), LabelText("Shell forward velocity"), Range(10, 50)]
-    public float Speed;
-
-    [BoxGroup("Shell Settings"), LabelText("Shell rotation velocity"), Range(5, 25)]
-    public float RotSpeed;
-
-    [BoxGroup("Shell Settings"), LabelText("Life time of shell"), Range(1, 10)]
-    public float LifeTime;
-
+        [BoxGroup("Shell Settings"), LabelText("Explosion VFX")]
+        public GameObject BoomVFX;
     #endregion
 
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine("LifeSpan");
-    }
+        Debug.Log(collision.gameObject.name);
 
-    private void Update()
-    {
-        var Rot = transform.forward * RotSpeed;
-
-        var Pos = Vector3.one;// real projectile motion here
-
-        transform.position += Pos;
-
-        transform.localEulerAngles += Rot;
-    }
-
-    IEnumerator LifeSpan()
-    {
-        while(true)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("BulletCollisions"))
         {
-            yield return new WaitForSeconds(LifeTime);
+            Debug.Log("Boomable");
 
-            Destroy(this.gameObject);
+            Instantiate(BoomVFX, this.transform.position, Quaternion.identity);
+
+            if(collision.gameObject.tag =="Player")
+            {
+                Debug.Log("Player");
+
+                collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
+            }
         }
-    }
 
+        Destroy(this.gameObject);
+    }
 
 }

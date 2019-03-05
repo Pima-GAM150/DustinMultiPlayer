@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class UIController : MonoBehaviour
 {
@@ -10,7 +11,32 @@ public class UIController : MonoBehaviour
 
     [BoxGroup("Game Control", true, true)]
     public GameObject OptionsMenu;
+
+    [BoxGroup("Game Control", true, true),LabelText("IsPaused"),ReadOnly]
+    public bool paused;
     #endregion
+
+    private void Start()
+    {
+        paused = false;
+    }
+
+    private void Update()
+    {
+        PauseInputCheck();
+    }
+
+    private void PauseInputCheck()
+    {
+        if((Input.GetKeyDown(KeyCode.Escape)||Input.GetKeyDown(KeyCode.P)) && !paused)
+        {
+            Pause();
+        }
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && paused)
+        {
+            Resume();
+        }
+    }
 
     public void StartConnection()
     {
@@ -39,6 +65,7 @@ public class UIController : MonoBehaviour
     public void Pause()
     {
         PauseMenu.SetActive(true);
+        paused = true;
         Debug.Log("Pause");
         Time.timeScale = .01f;
     }
@@ -46,6 +73,7 @@ public class UIController : MonoBehaviour
     public void Resume()
     {
         PauseMenu.SetActive(false);
+        paused = false;
         Debug.Log("Resume");
         Time.timeScale = 1;
     }

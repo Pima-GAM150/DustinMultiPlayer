@@ -8,6 +8,9 @@ public class Shoot : MonoBehaviourPun
     [BoxGroup("Projectile",true,true)]
     public GameObject Shell;
 
+    [BoxGroup("Projectile", true, true), LabelText("Initial Velocity"),Range(10,50)]
+    public float LaunchSpeed;
+
     [BoxGroup("Projectile", true, true), LabelText("Spawn Location")]
     public Transform SpawnTarget;
 
@@ -36,8 +39,12 @@ public class Shoot : MonoBehaviourPun
     [PunRPC]
     public void FireShell()
     {
-        GameObject newShell = Instantiate(Shell, SpawnTarget.position, Quaternion.identity);
+        GameObject newShell = Instantiate (Shell, SpawnTarget.position, SpawnTarget.localRotation);
 
+        newShell.GetComponentInChildren<Rigidbody>().velocity = LaunchSpeed * SpawnTarget.forward;
+
+        newShell.transform.forward = SpawnTarget.transform.forward;
+        
         newShell.GetComponentInChildren<Renderer>().material = PlayerColor;
     }
 

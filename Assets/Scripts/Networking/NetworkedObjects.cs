@@ -11,9 +11,7 @@ public class NetworkedObjects : MonoBehaviour
     public static NetworkedObjects Instance;
     
     private int Seed;
-
-
-
+    
     [BoxGroup("WorldData",true,true)]
     public BoxCollider World;
 
@@ -22,6 +20,7 @@ public class NetworkedObjects : MonoBehaviour
 
     [BoxGroup("WorldData", true, true),ReadOnly]
     public List<PhotonView> Players;
+
     [BoxGroup("WorldData", true, true), ReadOnly]
     public int index;
 
@@ -30,7 +29,7 @@ public class NetworkedObjects : MonoBehaviour
 
     private void Awake()
     {
-        index = 0;
+        index = Players.Capacity;
 
         if(Instance == null)
         {
@@ -53,27 +52,24 @@ public class NetworkedObjects : MonoBehaviour
 
         if(SpawnPoints.Count<=0)
         {
-            /* var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
+             var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
              var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
 
-             spawnPos = World.bounds.center + new Vector3(xRange, 1f, zRange); */
+             spawnPos = World.bounds.center + new Vector3(xRange, 5f, zRange);
 
-            spawnPos = new Vector3(0, 0, 0);
+           // spawnPos = new Vector3(0, 0, 0);
         }
         else
         {
-            spawnPos = SpawnPoints[index];
-
-            index++;
+            spawnPos = SpawnPoints[index % SpawnPoints.Capacity];
         }
 
-        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity);
     }
 
     public void AddPlayer(PhotonView player)
     {
         Players.Add(player);
-      //  player.
 
         if(PhotonNetwork.IsMasterClient)
         {
