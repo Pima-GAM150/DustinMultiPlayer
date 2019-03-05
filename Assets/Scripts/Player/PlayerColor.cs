@@ -20,6 +20,11 @@ public class PlayerColor : MonoBehaviourPun
     [PunRPC]
     public void SetColor(int order)
     {
+        if(order>20)
+        {
+            order = order % 20;
+        }
+
         CurrentColor = playerColors[order];
 
         foreach (Renderer rend in Rends)
