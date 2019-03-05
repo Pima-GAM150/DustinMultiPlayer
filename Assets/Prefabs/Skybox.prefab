@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413755453596095805}
   - component: {fileID: 413755453596095804}
-  - component: {fileID: 5920599992015407106}
+  - component: {fileID: 6822949905354532151}
   m_Layer: 0
   m_Name: Skybox
   m_TagString: Untagged
@@ -49,7 +49,7 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: caad73be13c48da42946cdcb62921710, type: 2}
---- !u!114 &5920599992015407106
+--- !u!114 &6822949905354532151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,5 +64,5 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: b2b189f0d7fd3424fa47e8cef6bfc7bb, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 0.798
-  priority: 0
+  weight: 0.814
+  priority: 100

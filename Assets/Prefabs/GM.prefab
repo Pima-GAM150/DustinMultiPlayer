@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8584609489670538367}
   - component: {fileID: 6381018422804154978}
-  - component: {fileID: 7994196499703203713}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -47,10 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   World: {fileID: 3544032900388186592}
   SpawnPoints:
-  - {x: 88, y: 1, z: -225}
-  - {x: -220, y: 1, z: -174}
-  - {x: 180, y: 1, z: 180}
-  - {x: -140, y: 1, z: 230}
+  - {x: 0, y: 5, z: 0}
+  - {x: -396, y: 5, z: -396}
+  - {x: -396, y: 5, z: 396}
+  - {x: 402, y: 5, z: 402}
+  - {x: 402, y: 5, z: -402}
   Players: []
   index: 0
   AddedAPlayer:
@@ -58,18 +58,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &7994196499703203713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4396460433136210256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f96ab5654a1acf4490fbd732d4320cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2003088713682078011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,6 +69,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WorldBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090183716949074139, guid: bbf1b8ad0e4f2c54bb18342049b8c658,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090183716949074139, guid: bbf1b8ad0e4f2c54bb18342049b8c658,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5608319510774886142, guid: bbf1b8ad0e4f2c54bb18342049b8c658,
         type: 3}
