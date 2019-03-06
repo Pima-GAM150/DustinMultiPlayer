@@ -29,11 +29,13 @@ public class NetworkedObjects : MonoBehaviour
 
     private void Awake()
     {
-        index = Players.Capacity;
+        
 
         if(Instance == null)
         {
             Instance = this;
+
+            index = Players.Count;
         }
         else
         {
@@ -50,7 +52,7 @@ public class NetworkedObjects : MonoBehaviour
             Seed = DateTime.Now.Second + System.Threading.Thread.CurrentThread.GetHashCode();
         }
 
-        if(SpawnPoints.Count<=0)
+        if(SpawnPoints.Count <= 0)
         {
              var xRange = UnityEngine.Random.Range(-World.bounds.extents.x, World.bounds.extents.x);
              var zRange = UnityEngine.Random.Range(-World.bounds.extents.z, World.bounds.extents.z);
@@ -61,10 +63,14 @@ public class NetworkedObjects : MonoBehaviour
         }
         else
         {
-            spawnPos = SpawnPoints[index % SpawnPoints.Capacity];
+            spawnPos = SpawnPoints[index % SpawnPoints.Count];
         }
 
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity);
+    }
+    private void Update()
+    {
+        CheckPlayerHealth();
     }
 
     public void AddPlayer(PhotonView player)
@@ -73,10 +79,23 @@ public class NetworkedObjects : MonoBehaviour
 
         if(PhotonNetwork.IsMasterClient)
         {
-            player.RPC("SetColor",RpcTarget.AllBuffered,Players.Count-1 );
+            player.RPC("SetColor", RpcTarget.AllBuffered, Players.Count - 1);
 
             AddedAPlayer?.Invoke();
         }
     }
 
+    private void CheckPlayerHealth()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+        
+        foreach(PhotonView p in Players)
+        {
+            if (p.GetComponent<Player>().Health <= 0) 
+            {
+                p.RPC("ReSpawn", RpcTarget.All);
+            }
+        }
+    }
 }

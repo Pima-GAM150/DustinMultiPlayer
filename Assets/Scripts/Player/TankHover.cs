@@ -31,7 +31,7 @@ public class TankHover : MonoBehaviour
 
         if(hit)
         {
-            rb.velocity = Vector3.zero;
+            //rb.velocity = Vector3.zero;
 
             rb.AddForce(Vector3.up * Lift, ForceMode.Impulse);
         }

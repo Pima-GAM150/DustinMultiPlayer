@@ -26,10 +26,11 @@ public class TankShell : MonoBehaviour
                 Debug.Log("Player");
 
                 collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
+
+                collision.gameObject.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
             }
         }
 
         Destroy(this.gameObject);
     }
-
 }

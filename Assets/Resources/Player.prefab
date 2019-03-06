@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 6301661737955558175}
   - component: {fileID: 1224989293115855310}
   - component: {fileID: 6743859850911771547}
+  - component: {fileID: 6239613558299148240}
   - component: {fileID: 6757116246162996923}
   m_Layer: 0
   m_Name: Player
@@ -404,6 +405,18 @@ MonoBehaviour:
   LastGunAngle: 0
   AppearanceGunAngle: 0
   pitch: 0
+--- !u!114 &6239613558299148240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394716785793098264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f8f9f5e232718408763e033745191b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6757116246162996923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a9f32c6dde1714098a6f90ec2069a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lift: 0.25
+  Lift: 0.41
   height: 2
   rb: {fileID: 4234890777013938768}
   layers:
