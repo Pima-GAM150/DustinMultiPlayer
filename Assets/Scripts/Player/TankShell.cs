@@ -5,32 +5,62 @@ using System.Collections;
 
 public class TankShell : MonoBehaviour
 {
-    #region Variables
+	#region Variables
 
-        [BoxGroup("Shell Settings"), LabelText("Explosion VFX")]
-        public GameObject BoomVFX;
-    #endregion
+		[BoxGroup("Shell Settings"), LabelText("Explosion VFX")]
+		public GameObject BoomVFX;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
+	#endregion
+	private void Start()
+	{
+		StartCoroutine("BlowUp", 6);
+	}
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("BulletCollisions"))
-        {
-            Debug.Log("Boomable");
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.layer == 1 << LayerMask.NameToLayer("Ground") || collision.gameObject.layer == 1 << LayerMask.NameToLayer("BulletCollisions"))
+		{
+			Debug.Log("Boomable");
 
-            Instantiate(BoomVFX, this.transform.position, Quaternion.identity);
+			Instantiate(BoomVFX, this.transform.position, Quaternion.identity);
 
-            if(collision.gameObject.tag =="Player")
-            {
-                Debug.Log("Player");
+			if(collision.gameObject.tag =="Player")
+			{
+				Debug.Log("Player");
 
-                collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
+				collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
 
-                collision.gameObject.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
-            }
-        }
+				var players = FindObjectsOfType<Player>();
 
-        Destroy(this.gameObject);
-    }
+				foreach(Player p in players)
+				{
+					if(p.GetComponent<PlayerColor>().CurrentColor == this.GetComponentInChildren<Renderer>().material)
+					{
+						print("player Found");
+
+						if (p.Health > 0)
+						{
+							p.OnPlayerKilled();
+						}						
+					}
+				}
+				
+				collision.gameObject.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
+			}
+		}
+		  
+		Destroy(this.gameObject);
+	}
+	
+	IEnumerator BlowUp (int delay)
+	{
+		while (delay>0)
+		{
+			yield return new WaitForSeconds(1);
+
+			delay--;
+		}
+
+		Destroy(this.gameObject);
+	}
 }

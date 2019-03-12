@@ -9,9 +9,6 @@ public class UIController : MonoBehaviour
     [BoxGroup("Game Control",true,true)]
     public GameObject PauseMenu;
 
-    [BoxGroup("Game Control", true, true)]
-    public GameObject OptionsMenu;
-
     [BoxGroup("Game Control", true, true),LabelText("IsPaused"),ReadOnly]
     public bool paused;
     #endregion

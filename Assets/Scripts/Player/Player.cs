@@ -1,28 +1,45 @@
 ﻿using Photon.Pun;
+using TMPro;
 
 public class Player : MonoBehaviourPun, IPunObservable, IPunInstantiateMagicCallback, IDamageable
 {
-    public float Health = 100;
+	public int Health = 100;
 
-    public static Player Instance;
+	public int Score = 0;
 
-    public void OnPhotonInstantiate(PhotonMessageInfo info)
-    {
-        NetworkedObjects.Instance.AddPlayer(this.photonView);
+	public TextMeshProUGUI ScoreText;
 
-        if(photonView.IsMine)
-        {
-            Instance = this;
-        }
-    }
+	public static Player Instance;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        stream.Serialize(ref Health);
-    }
+	public void OnPhotonInstantiate(PhotonMessageInfo info)
+	{
+		NetworkedObjects.Instance.AddPlayer(this.photonView);
 
-    public void TakeDamage()
-    {
-        Health -= 10;
-    }
+		if(photonView.IsMine)
+		{
+			Instance = this;
+		}
+	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		stream.Serialize(ref Health);
+		stream.Serialize(ref Score);
+	}
+
+	public void TakeDamage()
+	{
+		Health -= 10;
+	}
+
+	public void OnPlayerKilled()
+	{
+		print("player killed");
+		Score++;
+	}
+
+	private void OnGUI()
+	{
+		ScoreText.text = "Players Killed : " + Score;
+	}
 }
