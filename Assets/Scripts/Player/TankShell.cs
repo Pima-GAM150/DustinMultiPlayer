@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
-using UnityEngine.VFX;
 using System.Collections;
+using Photon.Pun;
 
 public class TankShell : MonoBehaviour
 {
@@ -10,7 +10,11 @@ public class TankShell : MonoBehaviour
 		[BoxGroup("Shell Settings"), LabelText("Explosion VFX")]
 		public GameObject BoomVFX;
 
+		[BoxGroup("Shell Settings"), LabelText("Owner")]
+		public Player MyPlayer;
+
 	#endregion
+
 	private void Start()
 	{
 		StartCoroutine("BlowUp", 6);
@@ -18,34 +22,20 @@ public class TankShell : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.layer == 1 << LayerMask.NameToLayer("Ground") || collision.gameObject.layer == 1 << LayerMask.NameToLayer("BulletCollisions"))
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("BulletCollisions"))
 		{
-			Debug.Log("Boomable");
-
 			Instantiate(BoomVFX, this.transform.position, Quaternion.identity);
 
-			if(collision.gameObject.tag =="Player")
+			if (collision.gameObject.tag == "Player")
 			{
-				Debug.Log("Player");
-
 				collision.gameObject.GetComponentInParent<IDamageable>().TakeDamage();
-
-				var players = FindObjectsOfType<Player>();
-
-				foreach(Player p in players)
-				{
-					if(p.GetComponent<PlayerColor>().CurrentColor == this.GetComponentInChildren<Renderer>().material)
-					{
-						print("player Found");
-
-						if (p.Health > 0)
-						{
-							p.OnPlayerKilled();
-						}						
-					}
-				}
 				
 				collision.gameObject.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
+
+				if (collision.gameObject.GetComponentInParent<Player>().Health == 0)
+				{
+					MyPlayer.OnPlayerKilled();
+				}
 			}
 		}
 		  

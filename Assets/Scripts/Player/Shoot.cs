@@ -41,6 +41,8 @@ public class Shoot : MonoBehaviourPun
 		newShell.GetComponentInChildren<Rigidbody>().velocity = LaunchSpeed * SpawnTarget.forward;
 
 		newShell.transform.forward = SpawnTarget.transform.forward;
+
+		newShell.GetComponent<TankShell>().MyPlayer = this.GetComponent<Player>();
 		
 		newShell.GetComponentInChildren<Renderer>().material = PlayerColor;
 	}

@@ -5,20 +5,30 @@ public class Player : MonoBehaviourPun, IPunObservable, IPunInstantiateMagicCall
 {
 	public int Health = 100;
 
-	public int Score = 0;
+	public int Score;
 
 	public TextMeshProUGUI ScoreText;
 
 	public static Player Instance;
 
+	private void Start()
+	{
+		Score = 0;
+	}
+
 	public void OnPhotonInstantiate(PhotonMessageInfo info)
 	{
-		NetworkedObjects.Instance.AddPlayer(this.photonView);
-
-		if(photonView.IsMine)
+		if (photonView.IsMine)
 		{
 			Instance = this;
 		}
+
+		NetworkedObjects.Instance.AddPlayer(this.photonView);
+	}
+
+	private void OnDestroy()
+	{
+		NetworkedObjects.Instance.RemovePlayer(this.photonView);
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -34,7 +44,6 @@ public class Player : MonoBehaviourPun, IPunObservable, IPunInstantiateMagicCall
 
 	public void OnPlayerKilled()
 	{
-		print("player killed");
 		Score++;
 	}
 

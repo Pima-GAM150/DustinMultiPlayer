@@ -1758,7 +1758,7 @@ PrefabInstance:
     - target: {fileID: 135854396513253596, guid: e0e7825d229510c4a8b19285c2e0580f,
         type: 3}
       propertyPath: m_Name
-      value: UI
+      value: UIController
       objectReference: {fileID: 0}
     - target: {fileID: 135854396513253586, guid: e0e7825d229510c4a8b19285c2e0580f,
         type: 3}
