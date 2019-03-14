@@ -1025,15 +1025,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6822949905354532151, guid: 0ee11db35938d28498cc57a6c8a6445b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 413755453596095795, guid: 0ee11db35938d28498cc57a6c8a6445b,
         type: 3}
       propertyPath: m_Name
       value: Skybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822949905354532151, guid: 0ee11db35938d28498cc57a6c8a6445b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 413755453596095805, guid: 0ee11db35938d28498cc57a6c8a6445b,
         type: 3}
